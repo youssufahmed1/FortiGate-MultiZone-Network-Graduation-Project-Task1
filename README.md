@@ -63,7 +63,7 @@ This repository contains Task 1 of my graduation project implementation. It demo
 
 * **FTP Server Login & Services:**
   
-  ![PC2 FTP Login[cite: 3]](./Screenshots%20Task%201/PC2%20log%20in%20in%20FTP%20Server.png)
+  ![PC2 FTP Login[cite: 3]](./Screenshots%20Task%201/PC2%20log%20in%20FTP%20Server.png)
   
   ![PC2 Request FTP[cite: 3]](./Screenshots%20Task%201/PC2%20Request%20Services%20from%20FTP%20Server.png)
 
@@ -107,7 +107,7 @@ This repository contains Task 1 of my graduation project implementation. It demo
 ### Management & Gateway Verification:
 
 * **Ping from PC to Port 1[cite: 3]:** 
-  ![Ping Port 1[cite: 3]](./Screenshots%20Task%201/Ping%20from%20my%20PC%20on%20Port%201.png)
+  ![Ping Port 1[cite: 3]](./Screenshots%20Task%201/Ping%20from%20my%20PC%20on%20my%20Port%201.png)
 
 * **Ping from PC to Bro's Port 1[cite: 3]:** 
-  ![Ping Bro Port 1[cite: 3]](./Screenshots%20Task%201/Ping%20from%20my%20PC%20on%20my%20Bros%20Port%201.png)
+  ![Ping Bro Port 1[cite: 3]](./Screenshots%20Task%201/Screenshots%20Task%201/Ping%20from%20my%20PC%20on%20my%20Bro%27s%20Port%201.png)

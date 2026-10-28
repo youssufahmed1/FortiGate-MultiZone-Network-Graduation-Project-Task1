@@ -125,7 +125,7 @@ Default route `0.0.0.0/0` via `192.168.1.1` on port1.
 
 ![PC2 ping FTP](<Screenshots Task 1/PC2 Ping on FTP Server.png>)
 
-![PC2 FTP login](<Screenshots Task 1/PC2 log in FTP Server.png>)
+![PC2 FTP login](<Screenshots Task 1/PC2 log in  FTP Server.png>)
 
 ![PC2 FTP files](<Screenshots Task 1/PC2 Request Services from FTP Server.png>)
 

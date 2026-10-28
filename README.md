@@ -1,113 +1,180 @@
 # FortiGate-MultiZone-Network-Graduation-Project-Task1
 Task 1 | Enterprise Multi-Zone Network Architecture &amp; FortiGate Firewall Security Lab (GNS3 &amp; VMware Workstation). Implemented Granular Access Policies, Static Routing, VIP/Port Forwarding, and Secure DMZ Services Reachability.
-# Enterprise Network Graduation Project - Task 1
+# FortiGate Multi-Zone Network: Graduation Project (Task 1)
 
-## Overview
-This repository contains Task 1 of my graduation project implementation. It demonstrates a secure, multi-zone enterprise network architecture built using GNS3, VMware Workstation, and a FortiGate Firewall to manage, segment, and secure enterprise traffic.
+A three-zone network (Internal / DMZ / External) secured by a **FortiGate 7.4.12** firewall, built and tested in **GNS3** and **VMware Workstation**.
 
----
-
-## Network Topology
-
-![Topology](./Screenshots%20Task%201/Topology.png)
+The task covers per-host access policies, outbound NAT for the DMZ servers and one internal client, and publishing the internal web server to the external zone through a **Virtual IP**.
 
 ---
 
-## Security Policies & Interfaces
-
-### 1. Network Interfaces Configuration
-![Network Interfaces](./Screenshots%20Task%201/Network%20(Interfaces).png)
-
-### 2. Static Routing Setup
-![Static Route](./Screenshots%20Task%201/Static%20Route.png)
-
-### 3. Firewall Policies (Part 1 & 2)
-![Policies Part 1](./Screenshots%20Task%201/Policies%20Part%201.png)
-
-![Policies Part 2](./Screenshots%20Task%201/Policies%20Part%202.png)
-
-### 4. Virtual IP (VIP) & Web Server Publishing
-![Virtual IP](./Screenshots%20Task%201/Virtual%20IP%20(External%20to%20Web%20Server).png)
+## Table of Contents
+1. [Topology](#1-topology)
+2. [Requirements](#2-requirements)
+3. [Configuration](#3-configuration)
+4. [Verification](#4-verification)
+5. [Tools](#5-tools)
 
 ---
 
-## Testing & Verification
+## 1. Topology
 
-### PC1 Testing (Internal Zone Services):
+![Topology](<Screenshots Task 1/Topology.png>)
 
-* **Requesting Services from Web Server:**
-  
-  ![PC1 Web](./Screenshots%20Task%201/PC1%20Request%20Services%20from%20Web.png)
-
-* **Requesting Services from DNS:**
-  
-  ![PC1 DNS](./Screenshots%20Task%201/PC1%20Request%20Services%20from%20DNS.png)
-
-* **Requesting Services from File Server:**
-  
-  ![PC1 File 1](./Screenshots%20Task%201/PC1%20Request%20Services%20from%20File%20Server%20(1).png)
-  
-  ![PC1 File 2](./Screenshots%20Task%201/PC1%20Request%20Services%20from%20File%20Server%20(2).png)
-
-* **Pings & Connectivity Tests:**
-  
-  ![PC1 Ping File Server](./Screenshots%20Task%201/PC1%20Ping%20on%20File%20Server.png)
-  
-  ![PC1 Ping DNS & Web](./Screenshots%20Task%201/PC1%20Ping%20on%20DNS%20and%20Web.png)
-  
-  ![PC1 Block External Ping](./Screenshots%20Task%201/PC1%20Ping%20on%20External%20(Block).png)
+| Zone | Interface | Subnet | Hosts |
+|---|---|---|---|
+| External | port1 | 192.168.1.0/24 | Firewall external IP: 192.168.1.2 |
+| DMZ | port2 | 192.168.2.0/24 | DNS (192.168.2.2), Web (192.168.2.10), FTP (192.168.2.20), File Server (192.168.2.30) |
+| Internal | port3 | 172.16.10.0/24 | PC1, PC2 |
 
 ---
 
-### PC2 Testing (Extended Access):
+## 2. Requirements
 
-* **FTP Server Login & Services:**
-  
- ![PC2 FTP Login](./Screenshots%20Task%201/PC2%20log%20in%20FTP%20Server.png)
-  
-  ![PC2 Request FTP[cite: 3]](./Screenshots%20Task%201/PC2%20Request%20Services%20from%20FTP%20Server.png)
+| Source | Allowed destinations |
+|---|---|
+| **PC1** | Web server, File server, DNS server (no internet access) |
+| **PC2** | FTP server, File server, DNS server, and the internet |
+| **DMZ servers** (Web, DNS, FTP, File) | External zone / internet |
+| **External clients** (inside the permitted address range) | Web server page, via the firewall's external IP |
 
-* **DNS & File Server Access:**
-  
-  ![PC2 DNS Server[cite: 3]](./Screenshots%20Task%201/PC2%20Request%20Services%20from%20DNS%20Server.png)
-  
-  ![PC2 File 1[cite: 3]](./Screenshots%20Task%201/PC2%20Request%20Services%20from%20File%20Server%20(1).png)
-  
-  ![PC2 File 2[cite: 3]](./Screenshots%20Task%201/PC2%20Request%20Services%20from%20File%20Server%20(2).png)
-
-* **External Connectivity (Internet & Ping):**
-  
-  ![PC2 External[cite: 3]](./Screenshots%20Task%201/PC2%20to%20External.png)
-  
-  ![PC2 Ping FTP[cite: 3]](./Screenshots%20Task%201/PC2%20Ping%20on%20FTP%20Server.png)
-  
-  ![PC2 Ping DNS and File Server[cite: 3]](./Screenshots%20Task%201/PC2%20Ping%20on%20DNS%20and%20File%20Server.png)
+Everything else is denied by the implicit deny rule.
 
 ---
 
-### DMZ Servers & External Reachability:
+## 3. Configuration
 
-* **DNS to External[cite: 1]:** 
-  ![DNS External[cite: 1]](./Screenshots%20Task%201/DNS%20to%20External.png)
+### 3.1 Interfaces
 
-* **External to Web Server[cite: 1]:** 
-  ![Ext Web[cite: 1]](./Screenshots%20Task%201/External%20to%20Web%20Server.png)
+![Interfaces](<Screenshots Task 1/Network (Interfaces).png>)
 
-* **File Sharing Server to External[cite: 1]:** 
-  ![File Ext[cite: 1]](./Screenshots%20Task%201/File%20Sharing%20Server%20to%20External.png)
+### 3.2 Static default route
 
-* **FTP Server to External[cite: 1]:** 
-  ![FTP Ext[cite: 1]](./Screenshots%20Task%201/FTP%20Server%20to%20External.png)
+Default route `0.0.0.0/0` via `192.168.1.1` on port1.
 
-* **Web Server to External[cite: 1]:** 
-  ![Web Ext[cite: 1]](./Screenshots%20Task%201/Web%20Server%20to%20External.png)
+![Static Route](<Screenshots Task 1/Static Route.png>)
+
+### 3.3 Firewall policies
+
+| # | Policy | Direction | Source | Destination | NAT |
+|---|---|---|---|---|---|
+| 1 | DMZ-to-External | port2 → port1 | DMZ servers | all | Enabled |
+| 2 | External-to-Web | port1 → port2 | Team (permitted external range) | External-to-Web (VIP) | Disabled |
+| 3 | PC1-to-Web-and-File-and-DNS | port3 → port2 | PC1 | Web, File, DNS servers | Disabled |
+| 4 | PC2-to-FTP-and-File-and-DNS | port3 → port2 | PC2 | FTP, File, DNS servers | Disabled |
+| 5 | PC2-to-External | port3 → port1 | PC2 | all | Enabled |
+| – | implicit_deny | any | all | all | Deny |
+
+![Policies Part 1](<Screenshots Task 1/Policies Part 1.png>)
+
+![Policies Part 2](<Screenshots Task 1/Policies Part 2.png>)
+
+### 3.4 Virtual IP (web publishing)
+
+| Name | Interface | Mapped from | Mapped to |
+|---|---|---|---|
+| External-to-Web | port1 | 192.168.1.2 (TCP/80) | 192.168.2.10 (TCP/80) |
+
+![Virtual IP](<Screenshots Task 1/Virtual IP (External to Web Server).png>)
 
 ---
 
-### Management & Gateway Verification:
+## 4. Verification
 
-* **Ping from PC to Port 1[cite: 3]:** 
-  ![Ping Port 1[cite: 3]](./Screenshots%20Task%201/Ping%20from%20my%20PC%20on%20my%20Port%201.png)
+### 4.1 PC1 (Web, File, DNS allowed; internet blocked)
 
-* **Ping from PC to Bro's Port 1[cite: 3]:** 
-  ![Ping Bro Port 1[cite: 3]](./Screenshots%20Task%201/Ping%20from%20my%20PC%20on%20my%20Bro%27s%20Port%201.png)
+**Reachability of the DNS and Web servers**
+
+![PC1 ping DNS and Web](<Screenshots Task 1/PC1 Ping on DNS and Web.png>)
+
+**DNS name resolution**
+
+![PC1 DNS](<Screenshots Task 1/PC1 Request Services from DNS.png>)
+
+**Web server access**
+
+![PC1 Web](<Screenshots Task 1/PC1 Request Services from Web.png>)
+
+**File server: reachability, share access, and file content**
+
+![PC1 ping File Server](<Screenshots Task 1/PC1 Ping on File Server.png>)
+
+![PC1 File Server share](<Screenshots Task 1/PC1 Request Services from File Server (1).png>)
+
+![PC1 File Server file](<Screenshots Task 1/PC1 Request Services from File Server (2).png>)
+
+**Internet access (blocked as required)**
+
+![PC1 blocked from internet](<Screenshots Task 1/PC1 Ping on External (Block).png>)
+
+### 4.2 PC2 (FTP, File, DNS, and internet allowed)
+
+**Reachability of the DNS and File servers**
+
+![PC2 ping DNS and File](<Screenshots Task 1/PC2 Ping on DNS and File Server.png>)
+
+**DNS name resolution**
+
+![PC2 DNS](<Screenshots Task 1/PC2 Request Services from DNS Server.png>)
+
+**File server: share access and file content**
+
+![PC2 File Server share](<Screenshots Task 1/PC2 Request Services from File Server (1).png>)
+
+![PC2 File Server file](<Screenshots Task 1/PC2 Request Services from File Server (2).png>)
+
+**FTP server: reachability, login, and file listing**
+
+![PC2 ping FTP](<Screenshots Task 1/PC2 Ping on FTP Server.png>)
+
+![PC2 FTP login](<Screenshots Task 1/PC2 log in FTP Server.png>)
+
+![PC2 FTP files](<Screenshots Task 1/PC2 Request Services from FTP Server.png>)
+
+**Internet access**
+
+![PC2 to External](<Screenshots Task 1/PC2 to External.png>)
+
+### 4.3 DMZ servers → External zone
+
+| Server | Result |
+|---|---|
+| DNS | ![DNS to External](<Screenshots Task 1/DNS to External.png>) |
+| Web | ![Web to External](<Screenshots Task 1/Web Server to External.png>) |
+| FTP | ![FTP to External](<Screenshots Task 1/FTP Server to External.png>) |
+| File Server | ![File Server to External](<Screenshots Task 1/File Sharing Server to External.png>) |
+
+### 4.4 External zone → Web server (through the Virtual IP)
+
+An external client browsing to the firewall's external IP (`http://192.168.1.2`) receives the web server's page. The Virtual IP hit counter shows 70 hits.
+
+![External to Web Server](<Screenshots Task 1/External to Web Server.png>)
+
+**External connectivity checks**
+
+| Target | Result |
+|---|---|
+| Firewall port1 (192.168.1.2) | ![Ping my port1](<Screenshots Task 1/Ping from my PC on my Port 1.png>) |
+| Second FortiGate port1 on the same external segment (192.168.1.3) | ![Ping second port1](<Screenshots Task 1/Ping from my PC on my Bro's Port 1.png>) |
+
+### 4.5 Summary
+
+| Test | Expected | Result |
+|---|---|---|
+| PC1 → Web, File, DNS | Allowed | Pass |
+| PC1 → Internet | Blocked | Pass |
+| PC2 → FTP, File, DNS | Allowed | Pass |
+| PC2 → Internet | Allowed | Pass |
+| DMZ servers → Internet | Allowed | Pass |
+| External → Web page via VIP | Allowed | Pass |
+| Any other traffic | Denied | Pass (implicit deny) |
+
+---
+
+## 5. Tools
+
+- FortiGate VM 7.4.12 (KVM)
+- GNS3 2.2.52
+- VMware Workstation
+- Windows Server 2019 (DMZ servers)
+- Windows 10 (clients)

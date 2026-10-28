@@ -110,4 +110,4 @@ This repository contains Task 1 of my graduation project implementation. It demo
   ![Ping Port 1[cite: 3]](./Screenshots%20Task%201/Ping%20from%20my%20PC%20on%20my%20Port%201.png)
 
 * **Ping from PC to Bro's Port 1[cite: 3]:** 
-  ![Ping Bro Port 1[cite: 3]](./Screenshots%20Task%201/Screenshots%20Task%201/Ping%20from%20my%20PC%20on%20my%20Bro%27s%20Port%201.png)
+  ![Ping Bro Port 1[cite: 3]](./Screenshots%20Task%201/Ping%20from%20my%20PC%20on%20my%20Bro%27s%20Port%201.png)

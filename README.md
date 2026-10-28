@@ -1,6 +1,4 @@
-# FortiGate-MultiZone-Network-Graduation-Project-Task1
-Task 1 | Enterprise Multi-Zone Network Architecture &amp; FortiGate Firewall Security Lab (GNS3 &amp; VMware Workstation). Implemented Granular Access Policies, Static Routing, VIP/Port Forwarding, and Secure DMZ Services Reachability.
-# FortiGate Multi-Zone Network: Graduation Project (Task 1)
+#  Graduation Project (Task 1): FortiGate Multi-Zone Network
 
 A three-zone network (Internal / DMZ / External) secured by a **FortiGate 7.4.12** firewall, built and tested in **GNS3** and **VMware Workstation**.
 

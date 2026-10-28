@@ -63,7 +63,7 @@ This repository contains Task 1 of my graduation project implementation. It demo
 
 * **FTP Server Login & Services:**
   
-  ![PC2 FTP Login[cite: 3]](./Screenshots%20Task%201/PC2%20log%20in%20FTP%20Server.png)
+  ![PC2 FTP Login[cite: 3]](./Screenshots%20Task%201/PC2%20Log%20in%20FTP%20Server.png)
   
   ![PC2 Request FTP[cite: 3]](./Screenshots%20Task%201/PC2%20Request%20Services%20from%20FTP%20Server.png)
 

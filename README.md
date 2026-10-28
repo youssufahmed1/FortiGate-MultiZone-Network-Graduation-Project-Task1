@@ -2,18 +2,18 @@
 Task 1 | Enterprise Multi-Zone Network Architecture &amp; FortiGate Firewall Security Lab (GNS3 &amp; VMware Workstation). Implemented Granular Access Policies, Static Routing, VIP/Port Forwarding, and Secure DMZ Services Reachability.
 # Enterprise Network Graduation Project - Task 1
 
-## 📌 Overview
-This repository contains **Task 1** of my graduation project implementation. It demonstrates a secure, multi-zone enterprise network architecture built using **GNS3**, **VMware Workstation**, and a **FortiGate Firewall** to manage, segment, and secure enterprise traffic.
+## Overview
+This repository contains Task 1 of my graduation project implementation. It demonstrates a secure, multi-zone enterprise network architecture built using GNS3, VMware Workstation, and a FortiGate Firewall to manage, segment, and secure enterprise traffic.
 
 ---
 
-## 📐 Network Topology
+## Network Topology
 
 ![Topology](./Screenshots%20Task%201/Topology.png)
 
 ---
 
-## 🔒 Security Policies & Interfaces
+## Security Policies & Interfaces
 
 ### 1. Network Interfaces Configuration
 ![Network Interfaces](./Screenshots%20Task%201/Network%20(Interfaces).png)
@@ -31,9 +31,9 @@ This repository contains **Task 1** of my graduation project implementation. It 
 
 ---
 
-## 🧪 Testing & Verification
+## Testing & Verification
 
-### **PC1 Testing (Internal Zone Services):**
+### PC1 Testing (Internal Zone Services):
 
 * **Requesting Services from Web Server:**
   
@@ -59,55 +59,55 @@ This repository contains **Task 1** of my graduation project implementation. It 
 
 ---
 
-### **PC2 Testing (Extended Access):**
+### PC2 Testing (Extended Access):
 
 * **FTP Server Login & Services:**
   
-  ![PC2 FTP Login](./Screenshots%20Task%201/PC2%20log%20in%20in%20FTP%20Server.png)
+  ![PC2 FTP Login[cite: 3]](./Screenshots%20Task%201/PC2%20log%20in%20in%20FTP%20Server.png)
   
-  ![PC2 Request FTP](./Screenshots%20Task%201/PC2%20Request%20Services%20from%20FTP%20Server.png)
+  ![PC2 Request FTP[cite: 3]](./Screenshots%20Task%201/PC2%20Request%20Services%20from%20FTP%20Server.png)
 
 * **DNS & File Server Access:**
   
-  ![PC2 DNS/File Server](./Screenshots%20Task%201/PC2%20Request%20Services%20from%20DNS%20Server.png)
+  ![PC2 DNS Server[cite: 3]](./Screenshots%20Task%201/PC2%20Request%20Services%20from%20DNS%20Server.png)
   
-  ![PC2 File 1](./Screenshots%20Task%201/PC2%20Request%20Services%20from%20File%20Server%20(1).png)
+  ![PC2 File 1[cite: 3]](./Screenshots%20Task%201/PC2%20Request%20Services%20from%20File%20Server%20(1).png)
   
-  ![PC2 File 2](./Screenshots%20Task%201/PC2%20Request%20Services%20from%20File%20Server%20(2).png)
+  ![PC2 File 2[cite: 3]](./Screenshots%20Task%201/PC2%20Request%20Services%20from%20File%20Server%20(2).png)
 
 * **External Connectivity (Internet & Ping):**
   
-  ![PC2 External](./Screenshots%20Task%201/PC2%20to%20External.png)
+  ![PC2 External[cite: 3]](./Screenshots%20Task%201/PC2%20to%20External.png)
   
-  ![PC2 Ping FTP](./Screenshots%20Task%201/PC2%20Ping%20on%20FTP%20Server.png)
+  ![PC2 Ping FTP[cite: 3]](./Screenshots%20Task%201/PC2%20Ping%20on%20FTP%20Server.png)
   
-  ![PC2 Ping DNS/File](./Screenshots%20Task%201/PC2%20Ping%20on%20DNS%20and%20File%20Server.png)
+  ![PC2 Ping DNS and File Server[cite: 3]](./Screenshots%20Task%201/PC2%20Ping%20on%20DNS%20and%20File%20Server.png)
 
 ---
 
-### **DMZ Servers & External Reachability:**
+### DMZ Servers & External Reachability:
 
-* **DNS to External:** 
-  ![DNS External](./Screenshots%20Task%201/DNS%20to%20External.png)
+* **DNS to External[cite: 1]:** 
+  ![DNS External[cite: 1]](./Screenshots%20Task%201/DNS%20to%20External.png)
 
-* **External to Web Server:** 
-  ![Ext Web](./Screenshots%20Task%201/External%20to%20Web%20Server.png)
+* **External to Web Server[cite: 1]:** 
+  ![Ext Web[cite: 1]](./Screenshots%20Task%201/External%20to%20Web%20Server.png)
 
-* **File Sharing to External:** 
-  ![File Ext](./Screenshots%20Task%201/File%20Sharing%20Server%20to%20External.png)
+* **File Sharing Server to External[cite: 1]:** 
+  ![File Ext[cite: 1]](./Screenshots%20Task%201/File%20Sharing%20Server%20to%20External.png)
 
-* **FTP Server to External:** 
-  ![FTP Ext](./Screenshots%20Task%201/FTP%20Server%20to%20External.png)
+* **FTP Server to External[cite: 1]:** 
+  ![FTP Ext[cite: 1]](./Screenshots%20Task%201/FTP%20Server%20to%20External.png)
 
-* **Web Server to External:** 
-  ![Web Ext](./Screenshots%20Task%201/Web%20Server%20to%20External.png)
+* **Web Server to External[cite: 1]:** 
+  ![Web Ext[cite: 1]](./Screenshots%20Task%201/Web%20Server%20to%20External.png)
 
 ---
 
-### **Management & Gateway Verification:**
+### Management & Gateway Verification:
 
-* **Ping from PC to Port 1:** 
-  ![Ping Port 1](./Screenshots%20Task%201/Ping%20from%20my%20PC%20on%20Port%201.png)
+* **Ping from PC to Port 1[cite: 3]:** 
+  ![Ping Port 1[cite: 3]](./Screenshots%20Task%201/Ping%20from%20my%20PC%20on%20Port%201.png)
 
-* **Ping from PC to Bro's Port 1:** 
-  ![Ping Bro Port 1](./Screenshots%20Task%201/Ping%20from%20my%20PC%20on%20my%20Bros%20Port%201.png)
+* **Ping from PC to Bro's Port 1[cite: 3]:** 
+  ![Ping Bro Port 1[cite: 3]](./Screenshots%20Task%201/Ping%20from%20my%20PC%20on%20my%20Bros%20Port%201.png)
